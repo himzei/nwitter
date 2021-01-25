@@ -15,15 +15,13 @@ function App() {
       if(user) {
         setIsLoggedIn(true);
         setUserObj(user);
-      }else{
-        setIsLoggedIn(false);
       }
       setInit(true);
     });
   }, []);
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} /> : "Initializing ...."}
+      {init ? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing ...."}
       <footer>&copy; Nwitter {new Date().getFullYear()}</footer>
     </>
   );
