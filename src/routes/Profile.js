@@ -8,6 +8,7 @@ export default ({ refreshUser, userObj }) => {
   const onLogOutClick = () => {
     authService.signOut();
     history.push("/");
+
   };
   const onChange = (event) => {
     const {
@@ -37,12 +38,28 @@ export default ({ refreshUser, userObj }) => {
     getMyNweets();
   }, []);
   return (
-    <>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} type="text" placeholder="Display Name" value={newDisplayName} />
-        <input type="submit" value="Update profile" />
+    <div className="container">
+      <form onSubmit={onSubmit} className="profileForm">
+      <input
+          onChange={onChange}
+          type="text"
+          autoFocus
+          placeholder="Display name"
+          value={newDisplayName}
+          className="formInput"
+        />
+        <input
+          type="submit"
+          value="Update Profile"
+          className="formBtn"
+          style={{
+            marginTop: 10,
+          }}
+        />
       </form>
-      <button onClick={onLogOutClick}>Logout</button>
-    </>
+      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+        Log Out
+      </span>
+    </div>
   );
 };
